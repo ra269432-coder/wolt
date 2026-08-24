@@ -1,4 +1,6 @@
 import { Hero } from "@/components/home/Hero";
+import { AboutUsPreview } from "@/components/home/AboutUsPreview";
+import { WhatWeDoPreview } from "@/components/home/WhatWeDoPreview";
 import { Stats } from "@/components/home/Stats";
 import { ProgramsPreview } from "@/components/home/ProgramsPreview";
 import { MediaNews } from "@/components/home/MediaNews";
@@ -10,6 +12,8 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Hero />
+      <AboutUsPreview />
+      <WhatWeDoPreview />
       <Stats />
       <ProgramsPreview />
       <MediaNews />
