@@ -3,11 +3,14 @@
 import { motion } from "framer-motion";
 
 const partners = [
-  { name: "Grameenphone", domain: "grameenphone.com" },
-  { name: "bKash", domain: "bkash.com" },
-  { name: "BRAC", domain: "brac.net" },
-  { name: "Walton", domain: "waltonbd.com" },
-  { name: "Nagad", domain: "nagad.com.bd" },
+  { name: "UNICEF", domain: "unicef.org" },
+  { name: "World Health Organization", domain: "who.int" },
+  { name: "UNDP", domain: "undp.org" },
+  { name: "USAID", domain: "usaid.gov" },
+  { name: "World Bank", domain: "worldbank.org" },
+  { name: "Bill & Melinda Gates Foundation", domain: "gatesfoundation.org" },
+  { name: "Save the Children", domain: "savethechildren.net" },
+  { name: "Oxfam", domain: "oxfam.org" },
 ];
 
 export function InvestorsMarquee() {

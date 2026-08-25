@@ -5,9 +5,9 @@ export function Footer() {
   return (
     <footer className="bg-[#0f172a] text-slate-300 py-16 font-sans">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           
-          {/* Column 1: About, Connect, Careers */}
+          {/* Column 1: About, Connect */}
           <div className="space-y-10">
             <div>
               <Link href="/" className="inline-block mb-4 bg-white p-2.5 rounded-lg shadow-sm">
@@ -33,12 +33,6 @@ export function Footer() {
               </div>
             </div>
 
-            <div>
-              <h3 className="text-white text-xl font-normal mb-3">Careers</h3>
-              <p className="text-[15px] text-slate-400 leading-relaxed">
-                Learn about <Link href="/careers" className="text-white font-medium underline underline-offset-4 decoration-slate-500 hover:decoration-white">Careers</Link>, and view our<br className="hidden lg:block" />current openings
-              </p>
-            </div>
           </div>
 
           {/* Column 2: Contact */}
@@ -92,6 +86,26 @@ export function Footer() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Column 4: Careers */}
+          <div className="lg:col-span-1">
+            <h3 className="text-white text-xl font-normal mb-5">Careers</h3>
+            <Link href="/careers" className="block bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 hover:border-blue-500/50 rounded-xl p-6 transition-all duration-300 group relative overflow-hidden shadow-lg hover:shadow-blue-900/20 hover:-translate-y-1">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-bl-full -mr-8 -mt-8 transition-transform duration-500 group-hover:scale-110"></div>
+              <div className="relative z-10">
+                <div className="bg-blue-500/20 text-blue-400 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <h4 className="text-white font-semibold text-lg mb-2">Join Our Team</h4>
+                <p className="text-[14px] text-slate-400 leading-relaxed mb-4">
+                  Explore exciting career opportunities and help us make a difference.
+                </p>
+                <div className="inline-flex items-center text-sm font-medium text-blue-400 group-hover:text-blue-300 transition-colors">
+                  View Openings <svg className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </div>
+              </div>
+            </Link>
           </div>
 
         </div>
