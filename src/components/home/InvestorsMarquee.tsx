@@ -3,22 +3,24 @@
 import { motion } from "framer-motion";
 
 const partners = [
-  { name: "UNICEF", domain: "unicef.org" },
-  { name: "World Health Organization", domain: "who.int" },
-  { name: "UNDP", domain: "undp.org" },
-  { name: "USAID", domain: "usaid.gov" },
-  { name: "World Bank", domain: "worldbank.org" },
-  { name: "Bill & Melinda Gates Foundation", domain: "gatesfoundation.org" },
-  { name: "Save the Children", domain: "savethechildren.net" },
-  { name: "Oxfam", domain: "oxfam.org" },
+  { name: "EBF", src: "/partners/media_1787805003778.png" },
+  { name: "Baptist Union of Scotland", src: "/partners/media_1787805012657.png" },
+  { name: "Eglise Baptiste du Calvaire", src: "/partners/media_1787805025175.png" },
+  { name: "Baptist Gottingen", src: "/partners/media_1787805031290.png" },
+  { name: "Partner 5", src: "/partners/media_1787805038741.png" },
+  { name: "New Partner 1", src: "/partners/media_1787805074828.png" },
+  { name: "New Partner 2", src: "/partners/media_1787805083630.png" },
+  { name: "New Partner 3", src: "/partners/media_1787805089983.png" }
 ];
+import { useLanguage } from "@/context/LanguageContext";
 
 export function InvestorsMarquee() {
+  const { t } = useLanguage();
   return (
-    <section className="py-24 bg-white overflow-hidden relative">
+    <section className="py-12 bg-white overflow-hidden relative">
       <div className="container mx-auto px-4 relative z-10 mb-16">
         <h2 className="text-center text-4xl md:text-5xl font-extrabold text-black tracking-tight">
-          Our <span className="text-[#0ea5e9]">Networks and Partners</span>
+          {t("partners.title1")} <span className="text-[#0ea5e9]">{t("partners.title2")}</span>
         </h2>
       </div>
 
@@ -45,31 +47,11 @@ export function InvestorsMarquee() {
               key={idx} 
               className="flex items-center justify-center mx-12 min-w-[200px]"
             >
-              <div className="relative h-24 w-48 flex items-center justify-center transition-all duration-300 hover:scale-105">
+              <div className="relative h-24 w-48 flex items-center justify-center transition-all duration-300 hover:scale-105 group/logo">
                 <img 
-                  src={`https://cdn.brandfetch.io/${partner.domain}/w/400/h/400`} 
+                  src={partner.src} 
                   alt={partner.name}
-                  className="max-h-full max-w-full object-contain"
-                  onError={(e) => {
-                    const img = e.currentTarget;
-                    if (img.src.includes('brandfetch')) {
-                      // Fallback 1: Clearbit API
-                      img.src = `https://logo.clearbit.com/${partner.domain}`;
-                    } else if (img.src.includes('clearbit')) {
-                      // Fallback 2: Google Favicon V2 (high res)
-                      img.src = `https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://${partner.domain}&size=128`;
-                    } else if (img.src.includes('gstatic')) {
-                      // Fallback 3: Text
-                      img.style.display = 'none';
-                      const parent = img.parentElement;
-                      if (parent && parent.children.length === 1) {
-                        const span = document.createElement('span');
-                        span.className = "text-xl font-bold text-slate-500 whitespace-normal text-center";
-                        span.innerText = partner.name;
-                        parent.appendChild(span);
-                      }
-                    }
-                  }}
+                  className="max-h-full max-w-full object-contain grayscale opacity-60 transition-all duration-300 group-hover/logo:grayscale-0 group-hover/logo:opacity-100"
                 />
               </div>
             </div>

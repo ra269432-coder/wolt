@@ -1,4 +1,5 @@
 import { Hero } from "@/components/home/Hero";
+import { ChairmanMessage } from "@/components/home/ChairmanMessage";
 import { AboutUsPreview } from "@/components/home/AboutUsPreview";
 import { WhatWeDoPreview } from "@/components/home/WhatWeDoPreview";
 import { Stats } from "@/components/home/Stats";
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Hero />
+      {/* <ChairmanMessage /> */}
       <AboutUsPreview />
       <WhatWeDoPreview />
       <Stats />

@@ -1,12 +1,38 @@
+"use client";
+
 import { Briefcase, ArrowRight, MapPin, Clock } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function CareersPage() {
+  const { language } = useLanguage();
+  const isBn = language === 'bn';
+
   const jobs = [
-    { title: "Senior Program Manager - Health", location: "Dhaka HQ", type: "Full-Time", department: "Programs" },
-    { title: "M&E Specialist", location: "Sylhet Regional Office", type: "Full-Time", department: "Research & Evaluation" },
-    { title: "Field Coordinator", location: "Kurigram", type: "Contract", department: "Humanitarian Response" },
-    { title: "Communications Officer", location: "Dhaka HQ", type: "Full-Time", department: "External Affairs" }
+    { 
+      title: isBn ? "সিনিয়র প্রোগ্রাম ম্যানেজার - স্বাস্থ্য" : "Senior Program Manager - Health", 
+      location: isBn ? "ঢাকা সদর দপ্তর" : "Dhaka HQ", 
+      type: isBn ? "পূর্ণকালীন" : "Full-Time", 
+      department: isBn ? "প্রোগ্রাম" : "Programs" 
+    },
+    { 
+      title: isBn ? "এমএন্ডই স্পেশালিস্ট" : "M&E Specialist", 
+      location: isBn ? "সিলেট আঞ্চলিক অফিস" : "Sylhet Regional Office", 
+      type: isBn ? "পূর্ণকালীন" : "Full-Time", 
+      department: isBn ? "গবেষণা ও মূল্যায়ন" : "Research & Evaluation" 
+    },
+    { 
+      title: isBn ? "ফিল্ড কো-অর্ডিনেটর" : "Field Coordinator", 
+      location: isBn ? "কুড়িগ্রাম" : "Kurigram", 
+      type: isBn ? "চুক্তিভিত্তিক" : "Contract", 
+      department: isBn ? "মানবিক প্রতিক্রিয়া" : "Humanitarian Response" 
+    },
+    { 
+      title: isBn ? "কমিউনিকেশন অফিসার" : "Communications Officer", 
+      location: isBn ? "ঢাকা সদর দপ্তর" : "Dhaka HQ", 
+      type: isBn ? "পূর্ণকালীন" : "Full-Time", 
+      department: isBn ? "বহিরাগত বিষয়" : "External Affairs" 
+    }
   ];
 
   return (
@@ -21,17 +47,27 @@ export default function CareersPage() {
           />
         </div>
         <div className="relative z-10 text-center px-4">
-          <span className="text-amber-400 font-bold tracking-widest uppercase mb-4 block">Get Involved</span>
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-6">Build a Career of Impact</h1>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">Join a diverse team of passionate professionals dedicated to eradicating poverty and driving sustainable change.</p>
+          <span className="text-amber-400 font-bold tracking-widest uppercase mb-4 block">
+            {isBn ? "জড়িত হন" : "Get Involved"}
+          </span>
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-6">
+            {isBn ? "প্রভাবশালী ক্যারিয়ার গড়ুন" : "Build a Career of Impact"}
+          </h1>
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+            {isBn ? "দারিদ্র্য দূরীকরণ এবং টেকসই পরিবর্তন চালনার জন্য নিবেদিত পেশাদারদের একটি বৈচিত্র্যময় দলে যোগ দিন।" : "Join a diverse team of passionate professionals dedicated to eradicating poverty and driving sustainable change."}
+          </p>
         </div>
       </section>
 
       {/* Content Section */}
       <section className="container mx-auto px-4 mt-16 max-w-5xl">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Current Openings</h2>
-          <p className="text-lg text-slate-600">Explore opportunities to join our team across Bangladesh.</p>
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            {isBn ? "বর্তমান সুযোগ" : "Current Openings"}
+          </h2>
+          <p className="text-lg text-slate-600">
+            {isBn ? "সারা বাংলাদেশে আমাদের দলে যোগদানের সুযোগগুলি অন্বেষণ করুন।" : "Explore opportunities to join our team across Bangladesh."}
+          </p>
         </div>
 
         <div className="space-y-4">
@@ -47,7 +83,7 @@ export default function CareersPage() {
               </div>
               <div>
                 <button className="w-full md:w-auto px-8 py-3 bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold rounded-xl transition-colors flex items-center justify-center gap-2">
-                  View Details <ArrowRight className="w-4 h-4" />
+                  {isBn ? "বিস্তারিত দেখুন" : "View Details"} <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
@@ -57,12 +93,12 @@ export default function CareersPage() {
         <div className="mt-16 bg-blue-600 rounded-3xl p-10 md:p-16 text-center text-white relative overflow-hidden shadow-xl">
           <Briefcase className="absolute -top-10 -right-10 w-48 h-48 text-blue-500/30 rotate-12" />
           <div className="relative z-10">
-            <h3 className="text-3xl font-bold mb-4">Don't see a fit?</h3>
+            <h3 className="text-3xl font-bold mb-4">{isBn ? "মানানসই কিছু দেখছেন না?" : "Don't see a fit?"}</h3>
             <p className="text-blue-100 text-lg max-w-2xl mx-auto mb-8">
-              We are always on the lookout for exceptional talent. Send your resume to our talent pool, and we'll contact you when a relevant position opens up.
+              {isBn ? "আমরা সবসময় ব্যতিক্রমী প্রতিভার সন্ধান করি। আমাদের ট্যালেন্ট পুলে আপনার জীবনবৃত্তান্ত পাঠান, এবং যখন একটি প্রাসঙ্গিক পদ খোলা হয় তখন আমরা আপনার সাথে যোগাযোগ করব।" : "We are always on the lookout for exceptional talent. Send your resume to our talent pool, and we'll contact you when a relevant position opens up."}
             </p>
             <button className="px-8 py-4 bg-white text-blue-600 hover:bg-blue-50 font-bold rounded-xl transition-colors">
-              Submit General Application
+              {isBn ? "সাধারণ আবেদন জমা দিন" : "Submit General Application"}
             </button>
           </div>
         </div>

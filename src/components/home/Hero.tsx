@@ -5,8 +5,10 @@ import { Button } from "../ui/button";
 import { ShieldCheck, Globe2, Users, ArrowRight, Play, HeartHandshake, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Hero() {
+  const { t } = useLanguage();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -30,7 +32,7 @@ export function Hero() {
   };
 
   return (
-    <section ref={ref} className="relative min-h-[92vh] flex flex-col justify-center overflow-hidden text-white bg-slate-950 pt-20">
+    <section ref={ref} className="relative min-h-[92vh] flex flex-col justify-start overflow-hidden text-white bg-slate-950 pt-28 pb-10">
       {/* Heavy Dynamic Background */}
       <motion.div style={{ y: yBg }} className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-slate-950 z-10" />
@@ -39,7 +41,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1531206715517-5c56108158d5?auto=format&fit=crop&w=1920&q=80')] opacity-[0.12] mix-blend-luminosity z-30 bg-cover bg-center" />
       </motion.div>
 
-      <div className="container relative z-40 px-4 py-16 lg:py-28 max-w-7xl mx-auto">
+      <div className="container relative z-40 px-4 py-8 lg:pt-8 lg:pb-12 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Text Content */}
@@ -50,31 +52,53 @@ export function Hero() {
             style={{ opacity: opacityText }}
             className="lg:col-span-7"
           >
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/5 backdrop-blur-xl mb-8 border border-white/10 shadow-2xl">
-              <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_rgba(52,211,153,0.8)]"></span>
-              <span className="text-sm font-bold tracking-[0.2em] uppercase text-emerald-400">Serving Bangladesh Since 2010</span>
+            <motion.div 
+              variants={itemVariants}
+              className="mb-2"
+            >
+              <motion.div
+                initial={{ backgroundPosition: "0% 50%" }}
+                animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+                className="inline-block text-2xl md:text-3xl font-black uppercase tracking-[0.3em] text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-blue-500 to-purple-500 bg-[length:200%_auto]"
+              >
+                Way of Light Trust
+              </motion.div>
+            </motion.div>
+
+            <motion.div 
+              variants={itemVariants} 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 backdrop-blur-xl mb-6 border border-white/10 hover:border-emerald-500/30 shadow-2xl transition-all cursor-pointer group"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-emerald-400 group-hover:text-emerald-300 transition-colors">{t("hero.badge")}</span>
             </motion.div>
             
             <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-8 leading-[1.02]">
-              Redefining <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">Impact.</span>
+              {t("hero.titleLine1")} <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">{t("hero.titleLine2")}</span>
             </motion.h1>
             
             <motion.p variants={itemVariants} className="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed font-medium max-w-2xl">
-              A frontline humanitarian organization eradicating extreme poverty, delivering emergency healthcare, and building climate resilience across 64 districts.
+              {t("hero.subtitle")}
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 mb-14">
               <Link href="#donate">
                 <Button size="lg" className="w-full sm:w-auto bg-white text-slate-950 hover:bg-slate-200 rounded-full px-12 py-8 text-xl font-black shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(255,255,255,0.5)] group">
-                  Start Donating
+                  {t("hero.startDonating")}
                   <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform" />
                 </Button>
               </Link>
               <Link href="/resource/media">
                 <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-full px-10 py-8 text-xl border-white/20 bg-white/5 hover:bg-white/10 hover:text-white font-bold backdrop-blur-md transition-all hover:scale-105">
                   <Play className="w-5 h-5 mr-3 fill-current" />
-                  Watch Video
+                  {t("hero.watchVideo")}
                 </Button>
               </Link>
             </motion.div>
@@ -85,19 +109,19 @@ export function Hero() {
                 <div className="bg-white/5 p-3 rounded-2xl group-hover:bg-emerald-500/20 transition-colors">
                   <ShieldCheck className="w-6 h-6 text-emerald-400 group-hover:scale-110 transition-transform" />
                 </div>
-                <span className="text-sm font-bold uppercase tracking-widest group-hover:text-white transition-colors">100% Secure</span>
+                <span className="text-sm font-bold uppercase tracking-widest group-hover:text-white transition-colors">{t("hero.trustSecure")}</span>
               </div>
               <div className="flex items-center gap-3 text-slate-400 group">
                 <div className="bg-white/5 p-3 rounded-2xl group-hover:bg-blue-500/20 transition-colors">
                   <Globe2 className="w-6 h-6 text-blue-400 group-hover:scale-110 transition-transform" />
                 </div>
-                <span className="text-sm font-bold uppercase tracking-widest group-hover:text-white transition-colors">Global NGO</span>
+                <span className="text-sm font-bold uppercase tracking-widest group-hover:text-white transition-colors">{t("hero.trustGlobal")}</span>
               </div>
               <div className="flex items-center gap-3 text-slate-400 group">
                 <div className="bg-white/5 p-3 rounded-2xl group-hover:bg-purple-500/20 transition-colors">
                   <Users className="w-6 h-6 text-purple-400 group-hover:scale-110 transition-transform" />
                 </div>
-                <span className="text-sm font-bold uppercase tracking-widest group-hover:text-white transition-colors">5M+ Reached</span>
+                <span className="text-sm font-bold uppercase tracking-widest group-hover:text-white transition-colors">{t("hero.trustReached")}</span>
               </div>
             </motion.div>
           </motion.div>
@@ -122,21 +146,24 @@ export function Hero() {
 
               {/* Top Tag */}
               <div className="absolute top-6 left-6 z-20">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-xl border border-white/20 text-xs font-bold uppercase tracking-widest text-white">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-400" /> Featured Mission
-                </span>
+                <div className="inline-flex items-center pr-4 pl-1 py-1.5 rounded-full bg-white/95 backdrop-blur-xl border border-white/20 text-xs font-bold uppercase tracking-widest text-slate-900 shadow-lg">
+                  <div className="relative w-10 h-10 rounded-full bg-white overflow-hidden flex items-center justify-center shadow-md border-2 border-white -ml-2 mr-3 flex-shrink-0">
+                    <img src="/logo2.jpeg" alt="WOLT" className="w-full h-full object-contain scale-[1.4] mix-blend-multiply contrast-110" />
+                  </div>
+                  {t("hero.photoFeatured")}
+                </div>
               </div>
 
               {/* Bottom Card Info Overlay */}
               <div className="absolute bottom-6 left-6 right-6 z-20">
                 <div className="bg-white/10 backdrop-blur-2xl p-6 rounded-3xl border border-white/20 text-white shadow-2xl space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">Emergency & Child Care</span>
-                    <span className="text-xs font-bold text-slate-300">2024 - 2025</span>
+                    <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">{t("hero.photoTag")}</span>
+                    <span className="text-xs font-bold text-slate-300">{t("hero.photoYear")}</span>
                   </div>
-                  <h3 className="font-black text-2xl tracking-tight">National Relief & Health Outreach</h3>
+                  <h3 className="font-black text-2xl tracking-tight">{t("hero.photoTitle")}</h3>
                   <p className="text-sm text-slate-200 leading-relaxed font-medium">
-                    Delivering vital food, healthcare, and educational aid directly to frontline vulnerable communities.
+                    {t("hero.photoDesc")}
                   </p>
                 </div>
               </div>
@@ -146,14 +173,14 @@ export function Hero() {
                 initial={{ opacity: 0, scale: 0.6 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.8, type: "spring" }}
-                className="absolute top-6 right-6 z-30 bg-indigo-600/90 backdrop-blur-xl text-white px-5 py-3.5 rounded-2xl shadow-[0_15px_35px_rgba(79,70,229,0.6)] border border-indigo-400/40 flex items-center gap-3"
+                className="absolute top-24 right-6 z-30 bg-indigo-600/90 backdrop-blur-xl text-white px-5 py-3.5 rounded-2xl shadow-[0_15px_35px_rgba(79,70,229,0.6)] border border-indigo-400/40 flex items-center gap-3"
               >
                 <div className="w-9 h-9 bg-white/20 rounded-xl flex items-center justify-center">
                   <HeartHandshake className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-[10px] text-indigo-200 font-bold uppercase tracking-wider leading-none mb-1">Total Impact</p>
-                  <p className="text-lg font-black leading-none">$45M+ Raised</p>
+                  <p className="text-[10px] text-indigo-200 font-bold uppercase tracking-wider leading-none mb-1">{t("hero.totalImpact")}</p>
+                  <p className="text-lg font-black leading-none">{t("hero.raised")}</p>
                 </div>
               </motion.div>
             </motion.div>

@@ -9,7 +9,7 @@ const featuredStory = {
   date: "October 24, 2024",
   category: "Emergency Healthcare",
   categoryColor: "bg-emerald-500 text-white",
-  image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=80",
+  image: "/images/humanitarian_response.jpg",
   excerpt: "In direct response to severe floodings, emergency rescue boats and fully stocked mobile clinics have provided immediate care to over 45,000 isolated families across the floodplains.",
   readTime: "4 min read",
   link: "/resource/news"
@@ -17,27 +17,35 @@ const featuredStory = {
 
 const recentNews = [
   {
-    title: "Global Climate Alliance Secures $5M Grant for Coastal Mangrove Restoration",
-    date: "September 28, 2024",
-    category: "Climate Action",
-    categoryColor: "bg-teal-500 text-white",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80",
+    title: "WOLT Relief Program: Serving with Compassion in Bangladesh",
+    date: "October 22, 2024",
+    category: "Relief Program",
+    categoryColor: "bg-orange-500 text-white",
+    image: "/images/humanitarian_response_bd.jpg",
     link: "/resource/news"
   },
   {
-    title: "Over 500 Educators Gather in Dhaka for 2024 Inclusive Schooling Summit",
-    date: "September 15, 2024",
+    title: "WOLT Education Program: Class 1 to 5 Education Provided",
+    date: "October 18, 2024",
     category: "Education",
     categoryColor: "bg-blue-500 text-white",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
+    image: "/images/social_development_bd.jpg",
     link: "/resource/news"
   },
   {
-    title: "Bashundhara Enterprise Reaches Landmark 50,000 Micro-Loan Recipients",
-    date: "August 10, 2024",
-    category: "Social Enterprise",
+    title: "WOLT Health Program: Free Medical Camps in 64 Districts",
+    date: "October 12, 2024",
+    category: "Healthcare",
+    categoryColor: "bg-teal-500 text-white",
+    image: "/images/social_development.jpg",
+    link: "/resource/news"
+  },
+  {
+    title: "WOLT Housing Project: Homes for the Homeless in Bangladesh",
+    date: "October 5, 2024",
+    category: "Housing",
     categoryColor: "bg-pink-500 text-white",
-    image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=600&q=80",
+    image: "/images/social_enterprise_bd.jpg",
     link: "/resource/news"
   }
 ];
@@ -61,9 +69,12 @@ const mediaHighlights = [
   }
 ];
 
+import { useLanguage } from "@/context/LanguageContext";
+
 export function MediaNews() {
+  const { t } = useLanguage();
   return (
-    <section className="py-32 bg-slate-900 text-white relative overflow-hidden">
+    <section className="py-16 bg-slate-900 text-white relative overflow-hidden">
       {/* Dynamic Background Gradients */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none"></div>
       <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none"></div>
@@ -75,17 +86,17 @@ export function MediaNews() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
           <div>
             <span className="text-cyan-400 font-black tracking-[0.3em] uppercase text-sm mb-4 flex items-center gap-3">
-              <Newspaper className="w-4 h-4 text-cyan-400" /> Media & Newsroom
+              <Newspaper className="w-4 h-4 text-cyan-400" /> {t("media.tag")}
             </span>
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.05]">
-              Stories from the <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">Frontline.</span>
+              {t("media.titleLine1")} <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">{t("media.titleLine2")}</span>
             </h2>
           </div>
           <div className="flex items-center gap-4">
             <Link href="/resource/news">
               <button className="flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white text-white hover:text-slate-950 rounded-full font-bold transition-all duration-300 backdrop-blur-md border border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]">
-                All Press Releases <ArrowRight className="w-5 h-5" />
+                {t("media.allPress")} <ArrowRight className="w-5 h-5" />
               </button>
             </Link>
           </div>
@@ -117,7 +128,7 @@ export function MediaNews() {
                       {featuredStory.category}
                     </span>
                     <span className="px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md text-white/90 text-xs font-semibold">
-                      Featured
+                      {t("media.featured")}
                     </span>
                   </div>
 
@@ -139,7 +150,7 @@ export function MediaNews() {
                     </p>
                   </div>
                   <div className="inline-flex items-center gap-3 font-bold text-cyan-400 text-sm uppercase tracking-widest group-hover:text-cyan-300">
-                    Read Complete Story <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                    {t("media.readComplete")} <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                   </div>
                 </div>
               </div>
@@ -176,7 +187,7 @@ export function MediaNews() {
                         {news.title}
                       </h4>
                       <span className="text-xs font-bold text-slate-400 group-hover:text-cyan-300 inline-flex items-center gap-1.5">
-                        Read More <ArrowRight className="w-3.5 h-3.5" />
+                        {t("media.readMore")} <ArrowRight className="w-3.5 h-3.5" />
                       </span>
                     </div>
                   </div>
@@ -191,10 +202,10 @@ export function MediaNews() {
         <div className="pt-8 border-t border-white/10">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-2xl font-black text-white flex items-center gap-3">
-              <Play className="w-5 h-5 text-red-500 fill-current" /> Video & Media Briefings
+              <Play className="w-5 h-5 text-red-500 fill-current" /> {t("media.videoTag")}
             </h3>
             <Link href="/resource/media" className="text-sm font-bold text-slate-400 hover:text-white transition-colors">
-              Explore Video Vault →
+              {t("media.exploreVideo")}
             </Link>
           </div>
 

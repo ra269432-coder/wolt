@@ -1,43 +1,58 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Menu, Heart, ChevronDown, Briefcase, Laptop, Handshake, Building, Newspaper, BookOpen, Megaphone, Bell, Plus, Minus, Image, FileText, Package, HeartPulse, GraduationCap, Target, Users, MapPin, Leaf, Activity, ShieldAlert } from "lucide-react";
+import { LanguageToggle } from "../ui/LanguageToggle";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Navbar() {
-  return (
-    <nav className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-md transition-all">
-      <div className="container mx-auto flex h-[90px] items-center justify-between px-4 lg:px-8">
-        <Link href="/" className="flex items-center gap-2 group h-full py-2.5">
-          <img src="/logo.png" alt="WOLT Foundation" className="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
-        </Link>
+  const { t } = useLanguage();
 
-        <div className="hidden lg:flex gap-9 items-center text-[15px] font-extrabold text-slate-900 uppercase tracking-wider h-full">
-          <Link href="/sdg" className="hover:text-blue-600 transition-colors duration-300 flex items-center h-full px-1 relative after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-0 after:bg-blue-600 hover:after:w-full after:transition-all">SDG&apos;S</Link>
+  return (
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[96%] max-w-[1400px] bg-white border border-white/40 shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-full transition-all duration-500 hover:shadow-[0_10px_50px_rgba(0,0,0,0.15)]">
+      <div className="flex h-[72px] items-center justify-between px-6 lg:px-8 relative">
+        <div className="flex-1 flex justify-start h-full items-center gap-5">
+          <Link href="/" className="relative flex items-center justify-center w-[60px] h-[60px] rounded-full overflow-hidden bg-white transition-transform duration-500 hover:scale-105 z-20 flex-shrink-0">
+            <img src="/logo2.jpeg" alt="WOLT Foundation" className="w-full h-full object-contain scale-[1.4] mix-blend-multiply contrast-110" />
+          </Link>
+          <div className="hidden sm:block h-6 w-[1px] bg-slate-300/50"></div>
+          <LanguageToggle />
+        </div>
+
+        <div className="hidden lg:flex flex-none gap-2 items-center justify-center text-[14px] font-bold text-slate-700 tracking-wide h-full">
+          <Link href="/sdg" className="relative px-4 py-2 rounded-full hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-300 flex items-center h-auto">
+            {t("nav.sdgs")}
+          </Link>
           
           {/* Mega Dropdown: ABOUT US */}
           <div className="relative group h-full flex items-center">
-            <button className="flex items-center gap-1.5 px-1 hover:text-blue-600 transition-colors duration-300 h-full outline-none relative after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-0 after:bg-blue-600 hover:after:w-full after:transition-all">
-              ABOUT US <ChevronDown className="w-5 h-5 transition-transform duration-300 group-hover:rotate-180 text-slate-400 group-hover:text-blue-600" />
+            <button className="flex items-center gap-1.5 px-4 py-2 rounded-full hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-300 h-auto outline-none">
+              {t("nav.aboutUs")} <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180 text-slate-400 group-hover:text-blue-600" />
             </button>
-            <div className="absolute top-full left-1/2 -translate-x-1/2 hidden group-hover:block w-[700px] pt-1">
-              <div className="bg-white rounded-xl shadow-2xl border border-slate-100 p-8 flex gap-12 text-slate-600 normal-case tracking-normal">
+            <div className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 invisible opacity-0 translate-y-4 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out w-[600px] pt-4">
+              <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.12)] border border-slate-100/50 p-6 flex gap-8 text-slate-600 normal-case tracking-normal">
                 {/* Column 1 */}
                 <div className="flex-1 space-y-2">
-                  <h3 className="text-lg text-slate-900 font-bold border-b border-slate-100 pb-2 mb-4 flex items-center justify-between">About us <span className="text-blue-500">&rarr;</span></h3>
+                  <h3 className="text-[11px] uppercase text-slate-400 font-extrabold tracking-[0.2em] border-b border-slate-100 pb-3 mb-3">{t("nav.menu.aboutUs")}</h3>
                   <div className="flex flex-col space-y-1">
-                    <Link href="/about/vision-mission-values" className="px-3 py-2 -mx-3 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center font-bold text-[15px] text-slate-800 group">
-                      <span className="group-hover:translate-x-1 transition-transform">Vision, Mission & Values</span>
+                    <Link href="/about/vision-mission-values" className="p-3 -mx-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-4 font-semibold text-[15px] text-slate-800 group/item">
+                      <div className="bg-blue-50/80 p-2.5 rounded-lg group-hover/item:bg-blue-500 group-hover/item:shadow-md group-hover/item:shadow-blue-500/20 transition-all duration-300"><Target className="w-5 h-5 text-blue-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-blue-600 transition-colors">{t("nav.menu.visionMission")}</span>
                     </Link>
                   </div>
                 </div>
                 {/* Column 2 */}
                 <div className="flex-1 space-y-2">
-                  <h3 className="text-lg text-slate-900 font-bold border-b border-slate-100 pb-2 mb-4 flex items-center justify-between">Our Teams <span className="text-blue-500">&rarr;</span></h3>
+                  <h3 className="text-[11px] uppercase text-slate-400 font-extrabold tracking-[0.2em] border-b border-slate-100 pb-3 mb-3">{t("nav.menu.ourTeams")}</h3>
                   <div className="flex flex-col space-y-1">
-                    <Link href="/teams/team" className="px-3 py-2 -mx-3 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center font-bold text-[15px] text-slate-800 group">
-                      <span className="group-hover:translate-x-1 transition-transform">Team</span>
+                    <Link href="/teams/team" className="p-3 -mx-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-4 font-semibold text-[15px] text-slate-800 group/item">
+                      <div className="bg-emerald-50/80 p-2.5 rounded-lg group-hover/item:bg-emerald-500 group-hover/item:shadow-md group-hover/item:shadow-emerald-500/20 transition-all duration-300"><Users className="w-5 h-5 text-emerald-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-emerald-600 transition-colors">{t("nav.menu.team")}</span>
                     </Link>
-                    <Link href="/teams/governing-board" className="px-3 py-2 -mx-3 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center font-bold text-[15px] text-slate-800 group">
-                      <span className="group-hover:translate-x-1 transition-transform">Governing Board</span>
+                    <Link href="/teams/governing-board" className="p-3 -mx-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-4 font-semibold text-[15px] text-slate-800 group/item">
+                      <div className="bg-purple-50/80 p-2.5 rounded-lg group-hover/item:bg-purple-500 group-hover/item:shadow-md group-hover/item:shadow-purple-500/20 transition-all duration-300"><Briefcase className="w-5 h-5 text-purple-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-purple-600 transition-colors">{t("nav.menu.governingBoard")}</span>
                     </Link>
                   </div>
                 </div>
@@ -47,74 +62,61 @@ export function Navbar() {
 
           {/* Mega Dropdown: WHAT WE DO */}
           <div className="relative group h-full flex items-center">
-            <button className="flex items-center gap-1.5 px-1 hover:text-blue-600 transition-colors duration-300 h-full outline-none relative after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-0 after:bg-blue-600 hover:after:w-full after:transition-all">
-              WHAT WE DO <ChevronDown className="w-5 h-5 transition-transform duration-300 group-hover:rotate-180 text-slate-400 group-hover:text-blue-600" />
+            <button className="flex items-center gap-1.5 px-4 py-2 rounded-full hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-300 h-auto outline-none">
+              {t("nav.whatWeDo")} <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180 text-slate-400 group-hover:text-blue-600" />
             </button>
-            <div className="absolute top-full left-1/2 -translate-x-1/2 hidden group-hover:block w-[450px] pt-1">
-              <div className="bg-white rounded-xl shadow-2xl border border-slate-100 p-0 text-slate-600 normal-case tracking-normal overflow-hidden">
-                <div className="flex flex-col w-full">
-                  {/* Social Development Accordion */}
-                  <details className="group/dev border-b border-slate-100" open>
-                    <summary className="flex items-center justify-between p-5 bg-white text-slate-900 font-bold text-[16px] cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-slate-50 transition-colors">
-                      <span>Social development</span>
-                      <div className="text-blue-500">
-                        <Plus className="w-5 h-5 group-open/dev:hidden" />
-                        <Minus className="w-5 h-5 hidden group-open/dev:block" />
-                      </div>
-                    </summary>
-                    <div className="flex flex-col bg-slate-50/50 border-t border-slate-100 p-2 gap-1">
-                      <Link href="/programs/mental-health" className="px-4 py-2.5 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center font-bold text-[15px] text-slate-800 group">
-                        <span className="group-hover:translate-x-1 transition-transform">Mental Health</span>
-                      </Link>
-                      <Link href="/programs/climate-change" className="px-4 py-2.5 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center font-bold text-[15px] text-slate-800 group">
-                        <span className="group-hover:translate-x-1 transition-transform">Climate change</span>
-                      </Link>
-                      <Link href="/programs/expanding-health-coverage" className="px-4 py-2.5 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center font-bold text-[15px] text-slate-800 group">
-                        <span className="group-hover:translate-x-1 transition-transform">Expanding health coverage</span>
-                      </Link>
-                      <Link href="/programs/advocacy-for-social-change" className="px-4 py-2.5 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center font-bold text-[15px] text-slate-800 group">
-                        <span className="group-hover:translate-x-1 transition-transform">Advocacy for Social Change</span>
-                      </Link>
-                      <Link href="/programs/disability-inclusion" className="px-4 py-2.5 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center font-bold text-[15px] text-slate-800 group">
-                        <span className="group-hover:translate-x-1 transition-transform">Disability inclusion</span>
-                      </Link>
-                    </div>
-                  </details>
-
-                  {/* Humanitarian Response Accordion */}
-                  <details className="group/hum border-b border-slate-100">
-                    <summary className="flex items-center justify-between p-5 bg-white text-slate-900 font-bold text-[16px] cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-slate-50 transition-colors">
-                      <span>Humanitarian response</span>
-                      <div className="text-blue-500">
-                        <Plus className="w-5 h-5 group-open/hum:hidden" />
-                        <Minus className="w-5 h-5 hidden group-open/hum:block" />
-                      </div>
-                    </summary>
-                    <div className="flex flex-col bg-slate-50/50 border-t border-slate-100 p-2 gap-1">
-                      <Link href="/programs/disaster-preparedness" className="px-4 py-2.5 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center font-bold text-[15px] text-slate-800 group">
-                        <span className="group-hover:translate-x-1 transition-transform leading-snug">Disaster preparedness and response in Bangladesh</span>
+            <div className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 invisible opacity-0 translate-y-4 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out w-[800px] pt-4">
+              <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.12)] border border-slate-100/50 p-8 flex gap-8 text-slate-600 normal-case tracking-normal">
+                {/* Social Development */}
+                <div className="flex-[1.5] space-y-2">
+                  <h3 className="text-[11px] uppercase text-slate-400 font-extrabold tracking-[0.2em] border-b border-slate-100 pb-3 mb-3">{t("nav.menu.socialDevelopment")}</h3>
+                  <div className="grid grid-cols-2 gap-x-2 gap-y-1">
+                    <Link href="/programs/mental-health" className="p-2.5 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-3 font-semibold text-[14px] text-slate-800 group/item">
+                      <div className="bg-pink-50 p-2 rounded-lg group-hover/item:bg-pink-500 transition-all duration-300"><Heart className="w-4 h-4 text-pink-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-pink-600 transition-colors">{t("nav.menu.mentalHealth")}</span>
+                    </Link>
+                    <Link href="/programs/climate-change" className="p-2.5 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-3 font-semibold text-[14px] text-slate-800 group/item">
+                      <div className="bg-teal-50 p-2 rounded-lg group-hover/item:bg-teal-500 transition-all duration-300"><Leaf className="w-4 h-4 text-teal-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-teal-600 transition-colors">{t("nav.menu.climateChange")}</span>
+                    </Link>
+                    <Link href="/programs/expanding-health-coverage" className="p-2.5 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-3 font-semibold text-[14px] text-slate-800 group/item">
+                      <div className="bg-emerald-50 p-2 rounded-lg group-hover/item:bg-emerald-500 transition-all duration-300"><HeartPulse className="w-4 h-4 text-emerald-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-emerald-600 transition-colors">{t("nav.menu.expandingHealth")}</span>
+                    </Link>
+                    <Link href="/programs/advocacy-for-social-change" className="p-2.5 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-3 font-semibold text-[14px] text-slate-800 group/item">
+                      <div className="bg-orange-50 p-2 rounded-lg group-hover/item:bg-orange-500 transition-all duration-300"><Megaphone className="w-4 h-4 text-orange-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-orange-600 transition-colors">{t("nav.menu.advocacy")}</span>
+                    </Link>
+                    <Link href="/programs/disability-inclusion" className="p-2.5 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-3 font-semibold text-[14px] text-slate-800 group/item col-span-2">
+                      <div className="bg-blue-50 p-2 rounded-lg group-hover/item:bg-blue-500 transition-all duration-300"><Users className="w-4 h-4 text-blue-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-blue-600 transition-colors">{t("nav.menu.disabilityInclusion")}</span>
+                    </Link>
+                  </div>
+                </div>
+                {/* Humanitarian Response & Social Enterprise */}
+                <div className="flex-1 space-y-6">
+                  <div className="space-y-2">
+                    <h3 className="text-[11px] uppercase text-slate-400 font-extrabold tracking-[0.2em] border-b border-slate-100 pb-3 mb-3">{t("nav.menu.humanitarianResponse")}</h3>
+                    <div className="flex flex-col space-y-1">
+                      <Link href="/programs/disaster-preparedness" className="p-2.5 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-3 font-semibold text-[14px] text-slate-800 group/item">
+                        <div className="bg-red-50 p-2 rounded-lg group-hover/item:bg-red-500 transition-all duration-300"><ShieldAlert className="w-4 h-4 text-red-600 group-hover/item:text-white transition-colors" /></div> 
+                        <span className="group-hover/item:text-red-600 transition-colors leading-snug">{t("nav.menu.disasterPreparedness")}</span>
                       </Link>
                     </div>
-                  </details>
-
-                  {/* Social Enterprise Accordion */}
-                  <details className="group/ent">
-                    <summary className="flex items-center justify-between p-5 bg-white text-slate-900 font-bold text-[16px] cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-slate-50 transition-colors">
-                      <span>Social Enterprise</span>
-                      <div className="text-blue-500">
-                        <Plus className="w-5 h-5 group-open/ent:hidden" />
-                        <Minus className="w-5 h-5 hidden group-open/ent:block" />
-                      </div>
-                    </summary>
-                    <div className="flex flex-col bg-slate-50/50 border-t border-slate-100 p-2 gap-1">
-                      <Link href="/programs/bashundhara" className="px-4 py-2.5 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center font-bold text-[15px] text-slate-800 group">
-                        <span className="group-hover:translate-x-1 transition-transform">Bashundhara</span>
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-[11px] uppercase text-slate-400 font-extrabold tracking-[0.2em] border-b border-slate-100 pb-3 mb-3">{t("nav.menu.socialEnterprise")}</h3>
+                    <div className="flex flex-col space-y-1">
+                      <Link href="/programs/bashundhara" className="p-2.5 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-3 font-semibold text-[14px] text-slate-800 group/item">
+                        <div className="bg-indigo-50 p-2 rounded-lg group-hover/item:bg-indigo-500 transition-all duration-300"><Building className="w-4 h-4 text-indigo-600 group-hover/item:text-white transition-colors" /></div> 
+                        <span className="group-hover/item:text-indigo-600 transition-colors">{t("nav.menu.bashundhara")}</span>
                       </Link>
-                      <Link href="/programs/teer" className="px-4 py-2.5 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center font-bold text-[15px] text-slate-800 group">
-                        <span className="group-hover:translate-x-1 transition-transform">Teer</span>
+                      <Link href="/programs/teer" className="p-2.5 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-3 font-semibold text-[14px] text-slate-800 group/item">
+                        <div className="bg-cyan-50 p-2 rounded-lg group-hover/item:bg-cyan-500 transition-all duration-300"><Target className="w-4 h-4 text-cyan-600 group-hover/item:text-white transition-colors" /></div> 
+                        <span className="group-hover/item:text-cyan-600 transition-colors">{t("nav.menu.teer")}</span>
                       </Link>
                     </div>
-                  </details>
+                  </div>
                 </div>
               </div>
             </div>
@@ -123,31 +125,37 @@ export function Navbar() {
           
           {/* Mega Dropdown: RESOURCES */}
           <div className="relative group h-full flex items-center">
-            <button className="flex items-center gap-1.5 px-1 hover:text-blue-600 transition-colors duration-300 h-full outline-none relative after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-0 after:bg-blue-600 hover:after:w-full after:transition-all">
-              RESOURCES <ChevronDown className="w-5 h-5 transition-transform duration-300 group-hover:rotate-180 text-slate-400 group-hover:text-blue-600" />
+            <button className="flex items-center gap-1.5 px-4 py-2 rounded-full hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-300 h-auto outline-none">
+              {t("nav.resources")} <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180 text-slate-400 group-hover:text-blue-600" />
             </button>
-            <div className="absolute top-full left-1/2 -translate-x-1/2 hidden group-hover:block w-[400px] pt-1">
-              <div className="bg-white rounded-xl shadow-2xl border border-slate-100 p-8 text-slate-600 normal-case tracking-normal">
+            <div className="absolute top-[calc(100%-8px)] left-1/2 -translate-x-1/2 invisible opacity-0 translate-y-4 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out w-[500px] pt-4">
+              <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.12)] border border-slate-100/50 p-6 text-slate-600 normal-case tracking-normal">
                 <div className="space-y-2">
-                  <h3 className="text-lg text-slate-900 font-bold border-b border-slate-100 pb-2 mb-4 flex items-center justify-between">Resources <span className="text-blue-500">&rarr;</span></h3>
-                  <div className="flex flex-col space-y-1">
-                    <Link href="/resource/news" className="px-3 py-2 -mx-3 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center gap-3 font-bold text-[15px] text-slate-800 group">
-                      <div className="bg-indigo-100 p-1.5 rounded-md group-hover:bg-indigo-500 transition-colors"><Newspaper className="w-4 h-4 text-indigo-600 group-hover:text-white transition-colors" /></div> <span className="group-hover:translate-x-1 transition-transform">News</span>
+                  <h3 className="text-[11px] uppercase text-slate-400 font-extrabold tracking-[0.2em] border-b border-slate-100 pb-3 mb-4">{t("nav.resources")}</h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    <Link href="/resource/news" className="p-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-4 font-semibold text-[15px] text-slate-800 group/item">
+                      <div className="bg-indigo-50 p-2.5 rounded-lg group-hover/item:bg-indigo-500 transition-all duration-300"><Newspaper className="w-4 h-4 text-indigo-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-indigo-600 transition-colors">{t("nav.menu.news")}</span>
                     </Link>
-                    <Link href="/resource/story" className="px-3 py-2 -mx-3 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center gap-3 font-bold text-[15px] text-slate-800 group">
-                      <div className="bg-amber-100 p-1.5 rounded-md group-hover:bg-amber-500 transition-colors"><BookOpen className="w-4 h-4 text-amber-600 group-hover:text-white transition-colors" /></div> <span className="group-hover:translate-x-1 transition-transform">Story</span>
+                    <Link href="/resource/story" className="p-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-4 font-semibold text-[15px] text-slate-800 group/item">
+                      <div className="bg-amber-50 p-2.5 rounded-lg group-hover/item:bg-amber-500 transition-all duration-300"><BookOpen className="w-4 h-4 text-amber-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-amber-600 transition-colors">{t("nav.menu.story")}</span>
                     </Link>
-                    <Link href="/resource/campaigns" className="px-3 py-2 -mx-3 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center gap-3 font-bold text-[15px] text-slate-800 group">
-                      <div className="bg-rose-100 p-1.5 rounded-md group-hover:bg-rose-500 transition-colors"><Megaphone className="w-4 h-4 text-rose-600 group-hover:text-white transition-colors" /></div> <span className="group-hover:translate-x-1 transition-transform">Campaigns</span>
+                    <Link href="/resource/campaigns" className="p-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-4 font-semibold text-[15px] text-slate-800 group/item">
+                      <div className="bg-rose-50 p-2.5 rounded-lg group-hover/item:bg-rose-500 transition-all duration-300"><Megaphone className="w-4 h-4 text-rose-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-rose-600 transition-colors">{t("nav.menu.campaigns")}</span>
                     </Link>
-                    <Link href="/resource/notice" className="px-3 py-2 -mx-3 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center gap-3 font-bold text-[15px] text-slate-800 group">
-                      <div className="bg-emerald-100 p-1.5 rounded-md group-hover:bg-emerald-500 transition-colors"><Bell className="w-4 h-4 text-emerald-600 group-hover:text-white transition-colors" /></div> <span className="group-hover:translate-x-1 transition-transform">Notice</span>
+                    <Link href="/resource/notice" className="p-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-4 font-semibold text-[15px] text-slate-800 group/item">
+                      <div className="bg-emerald-50 p-2.5 rounded-lg group-hover/item:bg-emerald-500 transition-all duration-300"><Bell className="w-4 h-4 text-emerald-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-emerald-600 transition-colors">{t("nav.menu.notice")}</span>
                     </Link>
-                    <Link href="/resource/media" className="px-3 py-2 -mx-3 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center gap-3 font-bold text-[15px] text-slate-800 group">
-                      <div className="bg-purple-100 p-1.5 rounded-md group-hover:bg-purple-500 transition-colors"><Image className="w-4 h-4 text-purple-600 group-hover:text-white transition-colors" /></div> <span className="group-hover:translate-x-1 transition-transform">Media</span>
+                    <Link href="/resource/media" className="p-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-4 font-semibold text-[15px] text-slate-800 group/item">
+                      <div className="bg-purple-50 p-2.5 rounded-lg group-hover/item:bg-purple-500 transition-all duration-300"><Image className="w-4 h-4 text-purple-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-purple-600 transition-colors">{t("nav.menu.media")}</span>
                     </Link>
-                    <Link href="/resource/research" className="px-3 py-2 -mx-3 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center gap-3 font-bold text-[15px] text-slate-800 group">
-                      <div className="bg-cyan-100 p-1.5 rounded-md group-hover:bg-cyan-500 transition-colors"><FileText className="w-4 h-4 text-cyan-600 group-hover:text-white transition-colors" /></div> <span className="group-hover:translate-x-1 transition-transform">Research</span>
+                    <Link href="/resource/research" className="p-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-4 font-semibold text-[15px] text-slate-800 group/item">
+                      <div className="bg-cyan-50 p-2.5 rounded-lg group-hover/item:bg-cyan-500 transition-all duration-300"><FileText className="w-4 h-4 text-cyan-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-cyan-600 transition-colors">{t("nav.menu.research")}</span>
                     </Link>
                   </div>
                 </div>
@@ -157,25 +165,29 @@ export function Navbar() {
           
           {/* Mega Dropdown: GET INVOLVED */}
           <div className="relative group h-full flex items-center">
-            <button className="flex items-center gap-1.5 px-1 hover:text-blue-600 transition-colors duration-300 h-full outline-none relative after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-0 after:bg-blue-600 hover:after:w-full after:transition-all">
-              GET INVOLVED <ChevronDown className="w-5 h-5 transition-transform duration-300 group-hover:rotate-180 text-slate-400 group-hover:text-blue-600" />
+            <button className="flex items-center gap-1.5 px-4 py-2 rounded-full hover:text-blue-600 hover:bg-blue-50/80 transition-all duration-300 h-auto outline-none">
+              {t("nav.getInvolved")} <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180 text-slate-400 group-hover:text-blue-600" />
             </button>
-            <div className="absolute top-full right-0 hidden group-hover:block w-[400px] pt-1">
-              <div className="bg-white rounded-xl shadow-2xl border border-slate-100 p-8 text-slate-600 normal-case tracking-normal">
+            <div className="absolute top-[calc(100%-8px)] right-0 invisible opacity-0 translate-y-4 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out w-[350px] pt-4">
+              <div className="bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.12)] border border-slate-100/50 p-6 text-slate-600 normal-case tracking-normal">
                 <div className="space-y-2">
-                  <h3 className="text-lg text-slate-900 font-bold border-b border-slate-100 pb-2 mb-4 flex items-center justify-between">Join Us <span className="text-blue-500">&rarr;</span></h3>
+                  <h3 className="text-[11px] uppercase text-slate-400 font-extrabold tracking-[0.2em] border-b border-slate-100 pb-3 mb-4">{t("nav.menu.joinUs")}</h3>
                   <div className="flex flex-col space-y-1">
-                    <Link href="/careers" className="px-3 py-2 -mx-3 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center gap-3 font-bold text-[15px] text-slate-800 group">
-                      <div className="bg-amber-100 p-1.5 rounded-md group-hover:bg-amber-500 transition-colors"><Briefcase className="w-4 h-4 text-amber-600 group-hover:text-white transition-colors" /></div> <span className="group-hover:translate-x-1 transition-transform">Career</span>
+                    <Link href="/careers" className="p-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-4 font-semibold text-[15px] text-slate-800 group/item">
+                      <div className="bg-amber-50 p-2.5 rounded-lg group-hover/item:bg-amber-500 transition-all duration-300"><Briefcase className="w-4 h-4 text-amber-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-amber-600 transition-colors">{t("nav.menu.career")}</span>
                     </Link>
-                    <Link href="/internship" className="px-3 py-2 -mx-3 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center gap-3 font-bold text-[15px] text-slate-800 group">
-                      <div className="bg-cyan-100 p-1.5 rounded-md group-hover:bg-cyan-500 transition-colors"><Laptop className="w-4 h-4 text-cyan-600 group-hover:text-white transition-colors" /></div> <span className="group-hover:translate-x-1 transition-transform">Internship</span>
+                    <Link href="/internship" className="p-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-4 font-semibold text-[15px] text-slate-800 group/item">
+                      <div className="bg-cyan-50 p-2.5 rounded-lg group-hover/item:bg-cyan-500 transition-all duration-300"><Laptop className="w-4 h-4 text-cyan-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-cyan-600 transition-colors">{t("nav.menu.internship")}</span>
                     </Link>
-                    <Link href="/partner" className="px-3 py-2 -mx-3 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center gap-3 font-bold text-[15px] text-slate-800 group">
-                      <div className="bg-pink-100 p-1.5 rounded-md group-hover:bg-pink-500 transition-colors"><Handshake className="w-4 h-4 text-pink-600 group-hover:text-white transition-colors" /></div> <span className="group-hover:translate-x-1 transition-transform">Partner with us</span>
+                    <Link href="/partner" className="p-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-4 font-semibold text-[15px] text-slate-800 group/item">
+                      <div className="bg-pink-50 p-2.5 rounded-lg group-hover/item:bg-pink-500 transition-all duration-300"><Handshake className="w-4 h-4 text-pink-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-pink-600 transition-colors">{t("nav.menu.partner")}</span>
                     </Link>
-                    <Link href="/visit" className="px-3 py-2 -mx-3 rounded-md hover:bg-blue-50 hover:text-blue-700 transition-all flex items-center gap-3 font-bold text-[15px] text-slate-800 group">
-                      <div className="bg-slate-100 p-1.5 rounded-md group-hover:bg-slate-500 transition-colors"><Building className="w-4 h-4 text-slate-600 group-hover:text-white transition-colors" /></div> <span className="group-hover:translate-x-1 transition-transform">Visit WOLT</span>
+                    <Link href="/visit" className="p-3 rounded-xl hover:bg-slate-50 transition-all flex items-center gap-4 font-semibold text-[15px] text-slate-800 group/item">
+                      <div className="bg-slate-50 p-2.5 rounded-lg group-hover/item:bg-slate-500 transition-all duration-300"><Building className="w-4 h-4 text-slate-600 group-hover/item:text-white transition-colors" /></div> 
+                      <span className="group-hover/item:text-slate-600 transition-colors">{t("nav.menu.visit")}</span>
                     </Link>
                   </div>
                 </div>
@@ -184,17 +196,18 @@ export function Navbar() {
           </div>
         </div>
 
-        <div className="flex items-center gap-6">
-          <Link href="/login" className="hidden text-base font-bold md:block hover:text-blue-600 uppercase text-slate-500 transition-all duration-300 tracking-wide hover:scale-105">
-            LOGIN
+        <div className="flex-1 flex items-center justify-end gap-3 sm:gap-6">
+          <Link href="/login" className="hidden lg:block text-sm font-bold text-slate-600 hover:text-blue-600 uppercase transition-all duration-300 tracking-wider">
+            {t("nav.login")}
           </Link>
-          <Link href="/#donate">
-            <Button className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 shadow-lg shadow-blue-500/30 text-white rounded-md px-8 py-6 text-base font-bold uppercase tracking-wide transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/40">
-              DONATE
+          <Link href="/#donate" className="group/btn relative">
+            <div className="absolute inset-0 bg-blue-600 rounded-full blur-md opacity-40 group-hover/btn:opacity-60 transition-opacity duration-300"></div>
+            <Button className="relative bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white rounded-full px-6 py-5 text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:shadow-lg border border-blue-400/20">
+              {t("nav.donate")}
             </Button>
           </Link>
-          <button className="lg:hidden p-2 text-slate-600 hover:text-blue-600 transition-colors">
-            <Menu className="h-8 w-8" />
+          <button className="lg:hidden p-2 text-slate-600 hover:text-blue-600 transition-colors bg-slate-50 rounded-full hover:bg-blue-50">
+            <Menu className="h-6 w-6" />
           </button>
         </div>
       </div>
