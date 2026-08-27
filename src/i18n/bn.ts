@@ -47,7 +47,7 @@ export const bn = {
     trustSecure: "১০০% নিরাপদ",
     trustGlobal: "গ্লোবাল এনজিও",
     trustReached: "৫০ লক্ষ+ পৌঁছেছে",
-    photoFeatured: "Waya Boflight Btrust",
+    photoFeatured: "Way of Light Trust",
     photoTag: "জরুরী ও শিশু যত্ন",
     photoYear: "২০২৪ - ২০২৫",
     photoTitle: "জাতীয় ত্রাণ ও স্বাস্থ্য আউটরিচ",

@@ -47,7 +47,7 @@ export const en = {
     trustSecure: "100% Secure",
     trustGlobal: "Global NGO",
     trustReached: "5M+ Reached",
-    photoFeatured: "Waya Boflight Btrust",
+    photoFeatured: "Way of Light Trust",
     photoTag: "Emergency & Child Care",
     photoYear: "2024 - 2025",
     photoTitle: "National Relief & Health Outreach",
