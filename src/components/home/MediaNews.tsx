@@ -74,7 +74,7 @@ import { useLanguage } from "@/context/LanguageContext";
 export function MediaNews() {
   const { t } = useLanguage();
   return (
-    <section className="py-16 bg-slate-900 text-white relative overflow-hidden">
+    <section className="py-16 bg-[#1E1B4B] text-white relative overflow-hidden">
       {/* Dynamic Background Gradients */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none"></div>
       <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none"></div>

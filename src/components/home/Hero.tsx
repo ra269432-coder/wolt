@@ -32,7 +32,7 @@ export function Hero() {
   };
 
   return (
-    <section ref={ref} className="relative min-h-[92vh] flex flex-col justify-start overflow-hidden text-white bg-slate-950 pt-28 pb-10">
+    <section ref={ref} className="relative min-h-[92vh] flex flex-col justify-start overflow-hidden text-white bg-[#0B1120] pt-28 pb-10">
       {/* Heavy Dynamic Background */}
       <motion.div style={{ y: yBg }} className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-slate-950 z-10" />
@@ -90,7 +90,7 @@ export function Hero() {
 
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 mb-14">
               <Link href="#donate">
-                <Button size="lg" className="w-full sm:w-auto bg-white text-slate-950 hover:bg-slate-200 rounded-full px-12 py-8 text-xl font-black shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(255,255,255,0.5)] group">
+                <Button size="lg" className="w-full sm:w-auto bg-[#3B82F6] text-white hover:bg-[#3B82F6]/90 rounded-full px-12 py-8 text-xl font-black shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(255,255,255,0.5)] group">
                   {t("hero.startDonating")}
                   <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform" />
                 </Button>

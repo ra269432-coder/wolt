@@ -8,7 +8,7 @@ export function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-slate-950 text-slate-200 py-12 border-t border-white/5 relative overflow-hidden">
+    <footer className="bg-[#020617] text-[#94A3B8] py-12 border-t border-white/5 relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none"></div>

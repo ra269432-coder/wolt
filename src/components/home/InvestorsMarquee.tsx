@@ -19,7 +19,7 @@ export function InvestorsMarquee() {
   return (
     <section className="py-12 bg-white overflow-hidden relative">
       <div className="container mx-auto px-4 relative z-10 mb-16">
-        <h2 className="text-center text-4xl md:text-5xl font-extrabold text-black tracking-tight">
+        <h2 className="text-center text-4xl md:text-5xl font-extrabold text-[#0F172A] tracking-tight">
           {t("partners.title1")} <span className="text-[#0ea5e9]">{t("partners.title2")}</span>
         </h2>
       </div>

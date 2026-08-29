@@ -69,7 +69,7 @@ export function ProgramsPreview() {
   };
 
   return (
-    <section className="py-16 bg-slate-50 relative overflow-hidden">
+    <section className="py-16 bg-[#E2E8F0] relative overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
@@ -81,13 +81,13 @@ export function ProgramsPreview() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <span className="block text-slate-900 font-black tracking-[0.3em] uppercase text-sm mb-4 flex items-center gap-4">
-              <span className="w-12 h-1 bg-slate-900 inline-block"></span> {t("programs.tag")}
+            <span className="block text-[#0F172A] font-black tracking-[0.3em] uppercase text-sm mb-4 flex items-center gap-4">
+              <span className="w-12 h-1 bg-[#0F172A] inline-block"></span> {t("programs.tag")}
             </span>
-            <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-[1.1] mb-6">
+            <h2 className="text-5xl md:text-7xl font-black text-[#0F172A] tracking-tighter leading-[1.1] mb-6">
               {t("programs.titleLine1")} <br/> {t("programs.titleLine2")}
             </h2>
-            <p className="text-xl text-slate-600 leading-relaxed max-w-2xl font-medium">
+            <p className="text-xl text-[#0F172A]/80 leading-relaxed max-w-2xl font-medium">
               {t("programs.subtitle")}
             </p>
           </motion.div>
@@ -134,8 +134,8 @@ export function ProgramsPreview() {
                   </div>
                   
                   <div className="p-8 flex flex-col flex-grow bg-white">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-blue-600 transition-colors">{program.title}</h3>
-                    <p className="text-slate-600 mb-8 flex-grow leading-relaxed font-medium">
+                    <h3 className="text-2xl font-bold text-[#0F172A] mb-4 leading-tight group-hover:text-blue-600 transition-colors">{program.title}</h3>
+                    <p className="text-[#0F172A]/80 mb-8 flex-grow leading-relaxed font-medium">
                       {program.description}
                     </p>
                     

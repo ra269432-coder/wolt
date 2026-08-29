@@ -35,7 +35,7 @@ export function Stats() {
   ];
 
   return (
-    <section className="py-16 bg-slate-950 relative overflow-hidden text-white">
+    <section className="py-16 bg-[#115E59] relative overflow-hidden text-white">
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1920&q=80')] opacity-[0.05] mix-blend-overlay pointer-events-none"></div>
       <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none"></div>

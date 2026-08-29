@@ -55,7 +55,7 @@ export function AboutUsPreview() {
   };
 
   return (
-    <section className="py-12 bg-slate-50 relative overflow-hidden">
+    <section className="py-12 bg-[#F8FAFC] relative overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:24px_24px]"></div>
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-blue-500/10 blur-[120px] mix-blend-multiply"></div>
@@ -73,7 +73,7 @@ export function AboutUsPreview() {
             <span className="block text-blue-600 font-black tracking-[0.2em] uppercase text-sm mb-4 flex items-center gap-4">
               <span className="w-12 h-1 bg-blue-600 inline-block"></span> {isBn ? "আমাদের সম্পর্কে" : "About Us"}
             </span>
-            <h2 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[1.1] mb-6">
+            <h2 className="text-5xl md:text-6xl font-black text-[#0F172A] tracking-tighter leading-[1.1] mb-6">
               {isBn ? <>আমরা কারা এবং <br/> আমাদের পথচলার প্রেরণা কী।</> : <>Who We Are & <br/> What Drives Us.</>}
             </h2>
             <p className="text-xl text-slate-600 leading-relaxed max-w-2xl font-medium">
@@ -109,7 +109,7 @@ export function AboutUsPreview() {
 
                   {/* Card Content (Bottom half) */}
                     <div className="relative flex flex-col flex-grow p-8">
-                    <h3 className={`text-2xl font-bold text-slate-900 mt-6 mb-4 transition-colors ${feature.hoverColor}`}>
+                    <h3 className={`text-2xl font-bold text-[#0F172A] mt-6 mb-4 transition-colors ${feature.hoverColor}`}>
                       {feature.title}
                     </h3>
                     <p className="text-slate-600 mb-8 flex-grow leading-relaxed font-medium">
