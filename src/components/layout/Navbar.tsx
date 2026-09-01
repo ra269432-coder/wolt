@@ -2,14 +2,17 @@
 
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { Menu, Heart, ChevronDown, Briefcase, Laptop, Handshake, Building, Newspaper, BookOpen, Megaphone, Bell, Plus, Minus, Image, FileText, Package, HeartPulse, GraduationCap, Target, Users, MapPin, Leaf, Activity, ShieldAlert } from "lucide-react";
+import { Menu, Heart, ChevronDown, Briefcase, Laptop, Handshake, Building, Newspaper, BookOpen, Megaphone, Bell, Plus, Minus, Image, FileText, Package, HeartPulse, GraduationCap, Target, Users, MapPin, Leaf, Activity, ShieldAlert, X } from "lucide-react";
+import { useState } from "react";
 import { LanguageToggle } from "../ui/LanguageToggle";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function Navbar() {
   const { t } = useLanguage();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
+    <>
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[96%] max-w-[1400px] bg-white border border-white/40 shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-full transition-all duration-500 hover:shadow-[0_10px_50px_rgba(0,0,0,0.15)]">
       <div className="flex h-[72px] items-center justify-between px-6 lg:px-8 relative">
         <div className="flex-1 flex justify-start h-full items-center gap-5">
@@ -206,11 +209,78 @@ export function Navbar() {
               {t("nav.donate")}
             </Button>
           </Link>
-          <button className="lg:hidden p-2 text-slate-600 hover:text-blue-600 transition-colors bg-slate-50 rounded-full hover:bg-blue-50">
+          <button onClick={() => setIsMobileMenuOpen(true)} className="lg:hidden p-2 text-slate-600 hover:text-blue-600 transition-colors bg-slate-50 rounded-full hover:bg-blue-50">
             <Menu className="h-6 w-6" />
           </button>
         </div>
       </div>
     </nav>
+
+    {/* Mobile Menu Overlay */}
+    <div className={`fixed inset-0 z-[200] bg-slate-900/50 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"}`} onClick={() => setIsMobileMenuOpen(false)}>
+      <div className={`fixed top-0 right-0 h-full w-[85%] max-w-[360px] bg-white shadow-2xl transition-transform duration-300 transform ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"} flex flex-col`} onClick={(e) => e.stopPropagation()}>
+        <div className="flex justify-between items-center p-6 border-b border-slate-100">
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-center w-12 h-12 rounded-full overflow-hidden bg-white">
+            <img src="/logo2.jpeg" alt="WOLT Foundation" className="w-full h-full object-contain scale-[1.4]" />
+          </Link>
+          <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 bg-slate-50 rounded-full text-slate-600 hover:bg-slate-100 transition-colors">
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+        <div className="overflow-y-auto flex-1 p-6 flex flex-col gap-2">
+          <Link href="/sdg" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-slate-700 py-3 border-b border-slate-50 hover:text-blue-600 transition-colors">
+            {t("nav.sdgs")}
+          </Link>
+          
+          <div className="py-3 border-b border-slate-50">
+            <div className="text-lg font-bold text-slate-700 mb-2">{t("nav.aboutUs")}</div>
+            <div className="flex flex-col gap-2 pl-4">
+              <Link href="/about/vision-mission-values" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-600 hover:text-blue-600">{t("nav.menu.visionMission")}</Link>
+              <Link href="/teams/team" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-600 hover:text-blue-600">{t("nav.menu.team")}</Link>
+              <Link href="/teams/governing-board" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-600 hover:text-blue-600">{t("nav.menu.governingBoard")}</Link>
+            </div>
+          </div>
+
+          <div className="py-3 border-b border-slate-50">
+            <div className="text-lg font-bold text-slate-700 mb-2">{t("nav.whatWeDo")}</div>
+            <div className="flex flex-col gap-2 pl-4">
+              <Link href="/programs/mental-health" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-600 hover:text-blue-600">{t("nav.menu.mentalHealth")}</Link>
+              <Link href="/programs/climate-change" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-600 hover:text-blue-600">{t("nav.menu.climateChange")}</Link>
+              <Link href="/programs/disability-inclusion" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-600 hover:text-blue-600">{t("nav.menu.disabilityInclusion")}</Link>
+            </div>
+          </div>
+
+          <div className="py-3 border-b border-slate-50">
+            <div className="text-lg font-bold text-slate-700 mb-2">{t("nav.resources")}</div>
+            <div className="flex flex-col gap-2 pl-4">
+              <Link href="/resource/news" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-600 hover:text-blue-600">{t("nav.menu.news")}</Link>
+              <Link href="/resource/campaigns" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-600 hover:text-blue-600">{t("nav.menu.campaigns")}</Link>
+            </div>
+          </div>
+
+          <div className="py-3 border-b border-slate-50">
+            <div className="text-lg font-bold text-slate-700 mb-2">{t("nav.getInvolved")}</div>
+            <div className="flex flex-col gap-2 pl-4">
+              <Link href="/careers" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-600 hover:text-blue-600">{t("nav.menu.career")}</Link>
+              <Link href="/internship" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-600 hover:text-blue-600">{t("nav.menu.internship")}</Link>
+              <Link href="/partner" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-600 hover:text-blue-600">{t("nav.menu.partner")}</Link>
+              <Link href="/visit" onClick={() => setIsMobileMenuOpen(false)} className="text-slate-600 hover:text-blue-600">{t("nav.menu.visit")}</Link>
+            </div>
+          </div>
+
+          <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-bold text-slate-700 py-3 border-b border-slate-50 hover:text-blue-600 transition-colors">
+            {t("nav.login")}
+          </Link>
+        </div>
+        <div className="p-6 border-t border-slate-100">
+          <Link href="/#donate" onClick={() => setIsMobileMenuOpen(false)}>
+            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full py-6 text-lg font-bold uppercase tracking-wider">
+              {t("nav.donate")}
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </div>
+    </>
   );
 }

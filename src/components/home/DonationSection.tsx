@@ -104,7 +104,7 @@ export function DonationSection() {
                   <input 
                     type="number" 
                     placeholder={t("donateSection.customAmount")} 
-                    className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:outline-none focus:border-blue-600 focus:bg-white transition-colors font-bold text-lg"
+                    className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:outline-none focus:border-blue-600 focus:bg-white transition-colors font-bold text-lg text-slate-900 placeholder:text-slate-400"
                     onChange={(e) => setSelectedAmount(Number(e.target.value))}
                   />
                 </div>
@@ -114,14 +114,14 @@ export function DonationSection() {
               <div>
                 <label className="block text-sm font-black tracking-widest uppercase text-slate-400 mb-4">{t("donateSection.paymentDetails")}</label>
                 <div className="space-y-4">
-                  <input type="text" placeholder={t("donateSection.cardName")} className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:outline-none focus:border-blue-600 focus:bg-white transition-colors font-bold" required />
+                  <input type="text" placeholder={t("donateSection.cardName")} className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:outline-none focus:border-blue-600 focus:bg-white transition-colors font-bold text-slate-900 placeholder:text-slate-400" required />
                   <div className="relative">
                     <CreditCard className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 w-6 h-6" />
-                    <input type="text" placeholder={t("donateSection.cardNumber")} className="w-full pl-16 pr-6 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:outline-none focus:border-blue-600 focus:bg-white transition-colors font-mono font-bold" required />
+                    <input type="text" placeholder={t("donateSection.cardNumber")} className="w-full pl-16 pr-6 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:outline-none focus:border-blue-600 focus:bg-white transition-colors font-mono font-bold text-slate-900 placeholder:text-slate-400" required />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
-                    <input type="text" placeholder="MM/YY" className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:outline-none focus:border-blue-600 focus:bg-white transition-colors font-bold" required />
-                    <input type="text" placeholder="CVC" className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:outline-none focus:border-blue-600 focus:bg-white transition-colors font-bold" required />
+                    <input type="text" placeholder="MM/YY" className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:outline-none focus:border-blue-600 focus:bg-white transition-colors font-bold text-slate-900 placeholder:text-slate-400" required />
+                    <input type="text" placeholder="CVC" className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:outline-none focus:border-blue-600 focus:bg-white transition-colors font-bold text-slate-900 placeholder:text-slate-400" required />
                   </div>
                 </div>
               </div>
